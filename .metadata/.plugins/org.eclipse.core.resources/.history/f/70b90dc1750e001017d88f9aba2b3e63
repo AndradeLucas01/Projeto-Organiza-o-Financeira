@@ -1,0 +1,12 @@
+package Users;
+
+public class PessoaFisica extends Pessoa {
+	
+	
+	
+	public PessoaFisica(String nome, String email,String senha, String cpf) {
+			super(nome,email,senha,cpf);
+			System.out.println("TEste");
+
+	}
+}

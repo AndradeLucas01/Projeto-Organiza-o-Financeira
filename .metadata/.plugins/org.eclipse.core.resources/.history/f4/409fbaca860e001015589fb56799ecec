@@ -1,0 +1,54 @@
+package View.Main;
+
+import Repositorios.TransacoesRepository;
+import Entidades.Transactions.*;
+
+
+
+public class AplicarDados {
+	public static void main(String[] args) {
+		Repositorio repositorio = new Repositorio();
+		
+		Pessoa user001 = new PessoaFisica("Lucas Andrade", "lucasandrade@gmail.com", "lucas123", "09935629490");
+		Pessoa user002 = new PessoaFisica("Maria Silva", "mariasilva@gmail.com", "maria456", "12345678900");
+		Pessoa user003 = new PessoaFisica("João Santos", "joaosantos@gmail.com", "joao789", "98765432100");
+
+		Transacoes tran001 = new Despesa("10/02/2025", 100.45, "Essencial", "Roupa");
+		Transacoes tran002 = new Entrada("19/02/2025", 1000.00,"Salário","Padaria");
+		Transacoes tran003 = new Investimento("18/02/2025", 500.00,"Pessoal", "Renda");
+		
+		tran001.setUsuario(user001);
+		repositorio.adicionarTransacao(tran001);
+		
+		tran002.setUsuario(user001);
+		repositorio.adicionarTransacao(tran002);
+		
+		tran003.setUsuario(user001);
+		repositorio.adicionarTransacao(tran003);
+		
+		Transacoes tran004 = new Despesa("15/02/2025", 50.00, "Essencial", "Almoço");
+		tran004.setUsuario(user002);
+		repositorio.adicionarTransacao(tran004);
+		
+		Transacoes tran005 = new Investimento("20/02/2025", 1000.00, "Pessoal", "Ações");
+		tran005.setUsuario(user003);
+		repositorio.adicionarTransacao(tran005);
+		
+		System.out.println("\nTransações do usuário 1:");
+		repositorio.listarTransacoesPorPessoa(user001);
+		
+		System.out.println("\nTransações do usuário 2:");
+		repositorio.listarTransacoesPorPessoa(user002);
+		
+		System.out.println("\nTransações do usuário 3:");
+		repositorio.listarTransacoesPorPessoa(user003);
+		
+		System.out.println("\nTodas as transações:");
+		repositorio.listarTransacoes();
+		
+		System.out.println("\nValidação de senhas:");
+		System.out.println("Senha do user001: " + user001.validarSenha("lucas123"));
+		System.out.println("Senha do user002: " + user002.validarSenha("maria456"));
+		System.out.println("Senha do user003: " + user003.validarSenha("joao789"));
+	}
+}
